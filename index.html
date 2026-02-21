@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sondor Eventos | Salón Jardín Boutique en Cusco</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'boutique-black': '#050505',
+                        'boutique-green': '#0a1f1a', // Verde esmeralda muy oscuro
+                        'boutique-green-light': '#163a30', 
+                        'boutique-gold': '#D4AF37',  
+                        'boutique-gold-light': '#ebd07f', 
+                        'boutique-bg': '#f7f9f7', // Fondo con un toque sutil de verde grisáceo   
+                    },
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .text-gradient-gold {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .img-hover-zoom {
+            overflow: hidden;
+        }
+        .img-hover-zoom img {
+            transition: transform .5s ease;
+        }
+        .img-hover-zoom:hover img {
+            transform: scale(1.08);
+        }
+        .form-input {
+            background-color: transparent;
+            border-bottom: 1px solid #D4AF37;
+            padding: 0.75rem 0.25rem;
+            width: 100%;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .form-input:focus {
+            border-color: #D4AF37;
+        }
+        .social-btn {
+            transition: all 0.3s ease;
+        }
+        .social-btn:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.2);
+        }
+        /* Botón Flotante de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Estilo para el Logo SVG */
+        .logo-container svg {
+            filter: drop-shadow(0 0 2px rgba(212, 175, 55, 0.5));
+        }
+    </style>
+</head>
+<body class="bg-boutique-bg text-gray-800 font-sans antialiased flex flex-col min-h-screen">
+    
+    <!-- Botón WhatsApp Flotante -->
+    <a href="https://wa.me/51982039752?text=Hola,%20me%20gustaría%20recibir%20información%20sobre%20el%20Salón%20Jardín%20Sondor%20Eventos" class="whatsapp-float" target="_blank">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.891 11.891-11.891 3.181 0 6.167 1.24 8.407 3.481 2.242 2.242 3.481 5.226 3.481 8.408 0 6.556-5.332 11.891-11.891 11.891-2.01 0-3.991-.51-5.747-1.474l-6.34 1.694zm6.305-3.615l.354.21c1.511.897 3.256 1.371 5.05 1.371 5.335 0 9.678-4.343 9.678-9.678 0-2.584-1.007-5.013-2.835-6.841-1.828-1.827-4.256-2.834-6.842-2.834-5.336 0-9.678 4.343-9.678 9.678 0 1.838.52 3.615 1.503 5.168l.23.362-.998 3.645 3.738-.981zM17.476 14.41c-.303-.153-1.797-.887-2.073-.987-.278-.1-.482-.149-.684.153-.203.303-.787.987-.965 1.19-.177.203-.356.229-.659.076-.303-.152-1.282-.472-2.44-1.506-.902-.803-1.51-1.797-1.687-2.099-.177-.302-.019-.465.133-.615.136-.135.303-.354.455-.53.151-.177.202-.303.303-.506.102-.202.051-.38-.025-.53-.076-.153-.684-1.649-.937-2.257-.247-.593-.499-.512-.684-.522l-.583-.009c-.203 0-.533.076-.812.38-.28.303-1.066 1.042-1.066 2.54 0 1.498 1.091 2.944 1.242 3.146.152.203 2.147 3.279 5.201 4.597.726.313 1.291.5 1.731.64.73.232 1.393.199 1.918.121.585-.087 1.797-.735 2.05-1.442.254-.707.254-1.314.178-1.442-.076-.128-.278-.204-.582-.357z"/></svg>
+    </a>
+
+    <!-- Barra de Navegación -->
+    <nav class="bg-boutique-green text-white shadow-lg py-4 sticky top-0 z-50 border-b border-boutique-gold/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <!-- Logo Sol y Luna -->
+                <div class="logo-container w-14 h-14 flex items-center justify-center">
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <!-- Luna -->
+                        <path d="M70,50 A20,20 0 1,1 70,49 A16,16 0 1,0 70,50" fill="#E5E7EB" transform="rotate(-15, 50, 50)"/>
+                        <!-- Sol y Glifos -->
+                        <g fill="none" stroke="#D4AF37" stroke-width="2.5">
+                            <path d="M35,30 L25,20 M30,50 L15,50 M35,70 L25,80 M50,25 L50,10 M50,75 L50,90 M65,30 L75,20" stroke-linecap="round"/>
+                            <circle cx="30" cy="35" r="1.5" fill="#D4AF37"/>
+                            <circle cx="30" cy="65" r="1.5" fill="#D4AF37"/>
+                            <path d="M22,40 Q18,50 22,60" />
+                        </g>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <h1 class="font-serif font-bold text-xl md:text-2xl tracking-widest text-boutique-gold uppercase">Sondor</h1>
+                    <span class="text-[0.55rem] tracking-[0.4em] uppercase text-gray-300 font-medium">Eventos • Cusco</span>
+                </div>
+            </div>
+            
+            <ul class="hidden md:flex space-x-8 text-xs font-medium uppercase tracking-widest">
+                <li><a href="#inicio" class="hover:text-boutique-gold transition duration-300">Inicio</a></li>
+                <li><a href="#estilos" class="hover:text-boutique-gold transition duration-300">Estilos</a></li>
+                <li><a href="#galeria" class="hover:text-boutique-gold transition duration-300">Galería</a></li>
+                <li><a href="#contacto" class="hover:text-boutique-gold transition duration-300">Reservar</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section id="inicio" class="relative h-[90vh] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 w-full h-full">
+                <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="[Imagen de Jardín para eventos en Cusco]" class="w-full h-full object-cover" />
+                <!-- Overlay en degradado verde para dar profundidad -->
+                <div class="absolute inset-0 bg-gradient-to-b from-boutique-green/80 via-boutique-green/60 to-boutique-green/90"></div>
+            </div>
+            
+            <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+                <div class="flex justify-center mb-6">
+                   <svg viewBox="0 0 100 100" class="w-20 h-20 opacity-80">
+                        <path d="M60,50 A25,25 0 1,1 60,49 A20,20 0 1,0 60,50" fill="#D4AF37"/>
+                    </svg>
+                </div>
+                <span class="text-boutique-gold uppercase tracking-[0.5em] text-xs font-semibold mb-6 block">San Sebastián • Cusco • Naturaleza</span>
+                <h2 class="text-7xl md:text-9xl font-serif text-white mb-6 leading-none">Sondor</h2>
+                <h3 class="text-2xl md:text-3xl font-serif text-gradient-gold italic mb-10 tracking-widest">Salón Jardín Boutique</h3>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-6">
+                    <a href="https://wa.me/51982039752" target="_blank" class="bg-boutique-gold text-boutique-green font-bold uppercase tracking-widest text-xs py-5 px-12 rounded-sm hover:bg-white transition duration-300 shadow-2xl flex items-center justify-center space-x-3">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.891 11.891-11.891 3.181 0 6.167 1.24 8.407 3.481 2.242 2.242 3.481 5.226 3.481 8.408 0 6.556-5.332 11.891-11.891 11.891-2.01 0-3.991-.51-5.747-1.474l-6.34 1.694zm6.305-3.615l.354.21c1.511.897 3.256 1.371 5.05 1.371 5.335 0 9.678-4.343 9.678-9.678 0-2.584-1.007-5.013-2.835-6.841-1.828-1.827-4.256-2.834-6.842-2.834-5.336 0-9.678 4.343-9.678 9.678 0 1.838.52 3.615 1.503 5.168l.23.362-.998 3.645 3.738-.981z"/></svg>
+                        <span>WhatsApp: 982 039 752</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Estilos -->
+        <section id="estilos" class="py-24 px-4 bg-white">
+            <div class="max-w-7xl mx-auto text-center">
+                <span class="text-boutique-green font-bold tracking-widest text-xs uppercase">Momentos Únicos</span>
+                <h2 class="text-4xl font-serif text-black mt-2 mb-4">La Experiencia Sondor</h2>
+                <div class="w-24 h-px bg-boutique-gold mx-auto mb-12"></div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="group relative img-hover-zoom shadow-2xl border-b-8 border-boutique-green">
+                        <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?auto=format&fit=crop&w=800&q=80" alt="[Imagen de Boda Rústica en Jardín]" class="w-full h-[500px] object-cover">
+                        <div class="absolute inset-0 bg-boutique-green/30 group-hover:bg-boutique-green/10 transition duration-500"></div>
+                        <div class="absolute bottom-0 left-0 p-10 w-full bg-gradient-to-t from-boutique-green to-transparent text-white text-left">
+                            <h3 class="text-3xl font-serif text-boutique-gold tracking-wider">Mística Cusqueña</h3>
+                            <p class="text-sm font-light mt-2 italic text-gray-200">El escenario perfecto bajo el sol radiante de los Andes.</p>
+                        </div>
+                    </div>
+                    <div class="group relative img-hover-zoom shadow-2xl border-b-8 border-boutique-green">
+                        <img src="https://images.unsplash.com/photo-1473177104440-9b17f1464f56?auto=format&fit=crop&w=800&q=80" alt="[Imagen de Evento Nocturno en Jardín]" class="w-full h-[500px] object-cover">
+                        <div class="absolute inset-0 bg-boutique-green/30 group-hover:bg-boutique-green/10 transition duration-500"></div>
+                        <div class="absolute bottom-0 left-0 p-10 w-full bg-gradient-to-t from-boutique-green to-transparent text-white text-left">
+                            <h3 class="text-3xl font-serif text-boutique-gold tracking-wider">Elegancia Nocturna</h3>
+                            <p class="text-sm font-light mt-2 italic text-gray-200">Tus sueños iluminados por la magia de nuestra luna boutique.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galería -->
+        <section id="galeria" class="py-24 px-4 bg-boutique-green text-white">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl font-serif text-boutique-gold mb-12 text-center italic tracking-widest">Inspiración Sondor</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="img-hover-zoom h-72 border border-boutique-gold/10 shadow-lg"><img src="https://images.unsplash.com/photo-1544594097-29367469279b?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover"></div>
+                    <div class="img-hover-zoom h-72 border border-boutique-gold/10 shadow-lg"><img src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover"></div>
+                    <div class="img-hover-zoom h-72 border border-boutique-gold/10 shadow-lg"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover"></div>
+                    <div class="img-hover-zoom h-72 border border-boutique-gold/10 shadow-lg"><img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section id="contacto" class="py-24 px-4 bg-white">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-serif text-boutique-green uppercase tracking-tighter">Reservar Fecha</h2>
+                    <p class="text-gray-500 mt-2 italic">Contáctanos al 982 039 752 o escríbenos aquí.</p>
+                </div>
+                <form id="weddingForm" class="space-y-8 bg-boutique-bg p-8 md:p-12 shadow-2xl border-t-4 border-boutique-gold">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <input type="text" class="form-input" placeholder="Nombre completo" required>
+                        <input type="tel" class="form-input" placeholder="WhatsApp" required>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <input type="date" class="form-input" required>
+                        <select class="form-input appearance-none">
+                            <option value="boda">Matrimonio</option>
+                            <option value="xv">Quinceañero</option>
+                            <option value="corporativo">Evento Corporativo</option>
+                        </select>
+                    </div>
+                    <textarea rows="4" class="form-input" placeholder="Cuéntanos más sobre tu evento..."></textarea>
+                    <div class="text-center">
+                        <button type="submit" class="bg-boutique-green text-boutique-gold border border-boutique-gold font-bold uppercase tracking-widest text-xs py-5 px-14 hover:bg-boutique-gold hover:text-boutique-green transition duration-500 shadow-2xl">
+                            Solicitar Cotización
+                        </button>
+                    </div>
+                </form>
+                <div id="successMessage" class="hidden mt-8 p-6 bg-boutique-green text-boutique-gold text-center rounded border border-boutique-gold font-medium">
+                    ¡Gracias por tu interés! Nos comunicaremos contigo muy pronto.
+                </div>
+            </div>
+        </section>
+
+        <!-- Ubicación -->
+        <section id="ubicacion" class="pb-24 px-4 bg-boutique-bg">
+            <div class="max-w-7xl mx-auto">
+                <div class="bg-white shadow-2xl overflow-hidden flex flex-col md:flex-row border border-boutique-green/10">
+                    <div class="md:w-1/3 bg-boutique-green text-white p-12 flex flex-col justify-center">
+                        <h3 class="text-2xl font-serif text-boutique-gold mb-8 italic">Contacto</h3>
+                        <div class="space-y-8 text-sm font-light">
+                            <p><strong class="text-boutique-gold uppercase block text-[0.65rem] tracking-[0.4em] mb-3 font-semibold">Dirección</strong> 
+                               Pasaje Sondorñan #100,<br>
+                               San Sebastián, Cusco.
+                            </p>
+                            <p><strong class="text-boutique-gold uppercase block text-[0.65rem] tracking-[0.4em] mb-3 font-semibold">Llámanos</strong> 
+                               Cel: 982 039 752<br>
+                               Atención todos los días.
+                            </p>
+                            <div class="flex space-x-8 pt-6 border-t border-boutique-gold/30">
+                                <a href="https://www.facebook.com/p/Sondor-Eventos-CUSCO-100057267436816/" target="_blank" class="social-btn text-boutique-gold uppercase text-[10px] tracking-widest font-bold">Facebook</a>
+                                <a href="https://www.instagram.com/eventos_sondor.cusco/?hl=es" target="_blank" class="social-btn text-boutique-gold uppercase text-[10px] tracking-widest font-bold">Instagram</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 h-[500px] relative">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3879.6830761152!2d-71.9360!3d-13.5259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x916e7f1e780775d7%3A0xf5108f972049e917!2sSan%20Sebastian%2C%20Cusco!5e0!3m2!1ses!2spe!4v1700000000000!5m2!1ses!2spe" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-boutique-green text-gray-400 py-20 text-center border-t border-boutique-gold/20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-center mb-8">
+                <svg viewBox="0 0 100 100" class="w-16 h-16 opacity-40">
+                    <path d="M60,50 A25,25 0 1,1 60,49 A20,20 0 1,0 60,50" fill="#D4AF37"/>
+                </svg>
+            </div>
+            <h2 class="font-serif text-5xl text-boutique-gold mb-4 italic tracking-widest">Sondor</h2>
+            <p class="text-[0.6rem] tracking-[0.5em] mb-12 uppercase font-medium text-gray-300">Salón Jardín • Pasaje Sondorñan 100 • Cusco</p>
+            <p class="text-[0.55rem] uppercase tracking-[0.6em] text-gray-500">&copy; 2026 Sondor Eventos Cusco. Donde la naturaleza y la elegancia se encuentran.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('weddingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            this.classList.add('hidden');
+            document.getElementById('successMessage').classList.remove('hidden');
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    </script>
+</body>
+</html>	
